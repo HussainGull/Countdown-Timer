@@ -56,7 +56,12 @@ body {
 .stopwatch-countdown-display {
     width: 100%;
     height: 100%;
-
+    font-family: "Assa Fonts", sans-serif;
+    color: white;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .stopwatch-controls {
@@ -117,6 +122,20 @@ body {
 }
 
 .confirmation-message {
+    width: 100%;
+    height: 100%;
+    text-align: center;
 
+}
+
+.confirmation-message p {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Assa Fonts", sans-serif;
+    color: white;
+    font-size: 1.4rem;
 
 }
