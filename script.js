@@ -30,9 +30,8 @@ userInput.addEventListener("input", (e) => {
         }, 1000);
     };
     const calculateDuration = () => {
-        const targetDate = new Date(userTargetInput);
         const currentDate = new Date();
-        const parsedTargetDate = Date.parse(targetDate);
+        const parsedTargetDate = Date.parse(userTargetInput);
         if (parsedTargetDate > currentDate) {
             const durationInSeconds = Math.abs((parsedTargetDate - currentDate) / 1000);
             stopwatchButton.addEventListener('click', e => {
