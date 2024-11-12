@@ -9,17 +9,6 @@ let countdownTimer;
 userInput.addEventListener("input", (e) => {
     userTargetInput = e.target.value;
 
-    const formatDateOutput = () => {
-        let newDate = new Date(userTargetInput);
-        let day = String(newDate.getDate()).padStart(2, "0");
-        let month = String(newDate.getMonth() + 1).padStart(2, "0");
-        let year = newDate.getFullYear();
-        let hours = String(newDate.getHours()).padStart(2, "0");
-        let minutes = String(newDate.getMinutes()).padStart(2, "0");
-        let seconds = String(newDate.getSeconds()).padStart(2, "0");
-        return {date: `${day}/${month}/${year}`, time: `${hours}:${minutes}:${seconds}`};
-    };
-
     const formatDuration = (remainingTimeInSeconds) => {
         let days = Math.floor(remainingTimeInSeconds / (24 * 3600));
         let hours = Math.floor((remainingTimeInSeconds % (24 * 3600)) / 3600);
@@ -40,16 +29,16 @@ userInput.addEventListener("input", (e) => {
             duration--;
         }, 1000);
     };
-
     const calculateDuration = () => {
-        const {date, time} = formatDateOutput();
         const targetDate = new Date(userTargetInput);
         const currentDate = new Date();
         const parsedTargetDate = Date.parse(targetDate);
         if (parsedTargetDate > currentDate) {
             const durationInSeconds = Math.abs((parsedTargetDate - currentDate) / 1000);
+            stopwatchButton.addEventListener('click', e => {
+                displayCountdown(durationInSeconds);
+            })
             confirmationMessage.innerHTML = `${formatDuration(durationInSeconds)}`;
-            displayCountdown(durationInSeconds);
         } else {
             alert("Please select a future date.");
         }
